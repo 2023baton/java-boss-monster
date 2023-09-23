@@ -10,7 +10,6 @@ Creature(Abstract)
 
 - [x] Hp를 가진다.
 - [x] DecreaseHp 함수를 가진다.
-- [x] Die 함수를 가진다.
 
 Enum AttackType
 
