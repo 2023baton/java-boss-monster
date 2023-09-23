@@ -10,10 +10,18 @@ Entity(Abstract)
   - [ ] Hp를 가진다.
   - [ ] DecreaseHp 함수를 가진다.
   - [ ] Die 함수를 가진다.
-  - [ ] Attack(Interface) 인터페이스를 가진다.
 
-Attack(Interface)
-- attack()을 가진다.
+Enum AttackType
+- [ ] Normal Attack (물리 공격)
+- [ ] Magical Attack(마법 공격)
+
+
+Attackable(Interface)
+-[ ] attack()을 가진다.
+-[ ] attack(AttackType을 가짐)
+
+
+
 
 
 Player - Entity 자식
@@ -21,37 +29,38 @@ Player - Entity 자식
     - [ ] HP + MP = 200여야 한다.
   - [ ] name을 가진다.
   - [ ] MP를 가진다.
-  - [ ] 공격을 할때 물리공격과 마법 공격으로 나뉜다.
+  - [ ] attackable 구현체를 가진다.
+    - [ ] 공격을 할때 물리공격과 마법 공격으로 나뉜다.
     - [ ] 1번은 물리 공격
-      - [ ] 물리 공격을 하면 MP 10 회복
-        - [ ] 최대 MP 초과해서는 회복되지 않는다.
-      - [ ] 데미지 10
+        - [ ] 물리 공격을 하면 MP 10 회복
+            - [ ] 최대 MP 초과해서는 회복되지 않는다.
+        - [ ] 데미지 10
     - [ ] 2번은 마법 공격
-      - [ ] 마법 공격을 하면 MP 30 감소
-      - [ ] 데미지 20
+        - [ ] 마법 공격을 하면 MP 30 감소
+        - [ ] 데미지 20
+
 
 Boss - Entity 자식
   - [ ] 생성될 때 (HP)를 생성자로 받는다.
     - [ ] HP는 100 ~ 300  사이여야 한다. 
   - [ ] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
+  - [ ] Attackable 인터페이스를 구현한다.
+    - [ ] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
 
 
+BattleResult
+- [ ] Player와 Boss를 의존성 주입 받는다.
+- [ ] BattleCount 를 가진다.
+- [ ] isPlayerWin을 가진다.
 
-BattleInformation
-- [ ] Battle Count 를 가진다.
-- [ ] next()에서 플레이어가 먼저 공격하도록 구현
-  - [ ] 둘 중 하나라도 HP가 0이 되면 게임이 끝나도록 한다.
 ### 서비스 레이어
 Battle Service(Inferface)
 - [ ] 생성자 주입을 통해 배틀 방식 중 하나를 입력받는다.
 - [ ] next() 다음 배틀을 가진다.
-  - [ ]  매개 변수로 플레이어의 공격 종류, 몬스터 데미지를 가진다.
-- [ ] getGameResult
 
 
 PlayerFirstBattleService(BattleService 구현체)
 - [ ] next()를 플레이어가 선 공격하도록 구현한다.
-- [ ] getGameResult
 
 ### 입력 요구사항
 - [ ] 보스 몬스터의 HP를 입력받는다.
@@ -112,7 +121,7 @@ PlayerFirstBattleService(BattleService 구현체)
     ============================
     BOSS HP [60/100]
     ____________________________
-    ^-^
+      ^-^
     / x x \
     (   "\  )
     \  ^  /
