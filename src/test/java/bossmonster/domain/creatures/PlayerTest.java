@@ -1,5 +1,6 @@
 package bossmonster.domain.creatures;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,17 @@ class PlayerTest {
     @DisplayName("6글자를 입력하면 예외가 발생한다.")
     void 다섯글자_이름_초과() {
         assertThrows(IllegalArgumentException.class, () -> new Player(60, 140, "여섯글자이름"));
+    }
+
+    @Test
+    @DisplayName("최대 MP 100을 초과해서 회복되지 않는다.")
+    void PlayerTest() {
+        //given
+        Player player = new Player(100, 100, "test1");
+        //when
+        player.increaseMp(10);
+        //then
+        Assertions.assertThat(player.getMp()).isEqualTo(100);
     }
 
 

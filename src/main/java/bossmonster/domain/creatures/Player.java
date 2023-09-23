@@ -1,17 +1,44 @@
 package bossmonster.domain.creatures;
 
-public final class Player extends Creature {
+import bossmonster.domain.AttackType;
+import bossmonster.domain.Attackable;
+
+public final class Player extends Creature implements Attackable {
     private static final int HP_MP_SUM = 200;
     private static final int PLAYER_NAME_MAX_LENGTH = 5;
-    private int mp;
+    private int totalMp;
     private final String name;
+    private int mp;
 
-    public Player(int hp, int mp, String name) {
-        validateStatSum(hp, mp);
-        validateNameLength(name);
-        this.hp = hp;
-        this.mp = mp;
+    public int getTotalMp() {
+        return totalMp;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMp() {
+        return mp;
+    }
+
+    public Player(int totalHp, int totalMp, String name) {
+        super(totalHp);
+        this.totalMp = totalMp;
         this.name = name;
+        validateStatSum(totalHp, totalMp);
+        validateNameLength(name);
+        mp = totalMp;
+    }
+
+    @Override
+    public void attack(AttackType attackType) {
+        return;
+    }
+
+    public void increaseMp(int amount) {
+        mp += amount;
+        if (mp >= totalHp) mp = totalMp;
     }
 
     private void validateNameLength(String name) {
@@ -25,5 +52,4 @@ public final class Player extends Creature {
             throw new IllegalArgumentException("Hp와 MP의 합은 200이어야 합니다.");
         }
     }
-
 }

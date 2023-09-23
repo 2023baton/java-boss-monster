@@ -5,9 +5,9 @@ public final class Boss extends Creature {
     private static final int BOSS_MIN_HP = 100;
     private static final int BOSS_MAX_HP = 300;
 
-    public Boss(int hp) {
-        validateHp(hp);
-        this.hp = hp;
+    public Boss(int totalHp) {
+        super(totalHp);
+        validateHp(totalHp);
     }
 
     private void validateHp(int hp) {
