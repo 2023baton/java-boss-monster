@@ -14,8 +14,8 @@ Creature(Abstract)
 Enum AttackType
 
 - [x] 공격 종류, 데미지, 공격 번호를 가진다.
-- [x] Normal Attack (물리 공격), 데미지 10
-- [x] Magical Attack(마법 공격), 데미지 20
+- [x] Normal Attack (물리 공격), 데미지 10, 마나 소모량 -10
+- [x] Magical Attack(마법 공격), 데미지 20, 마나 소모량 30
 
 Attackable(Interface)
 

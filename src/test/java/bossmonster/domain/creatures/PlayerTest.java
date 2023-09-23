@@ -1,9 +1,9 @@
 package bossmonster.domain.creatures;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PlayerTest {
@@ -40,13 +40,57 @@ class PlayerTest {
 
     @Test
     @DisplayName("최대 MP 100을 초과해서 회복되지 않는다.")
+    void Mp_초과시_그대로() {
+        //given
+        Player player = new Player(100, 100, "test1");
+        //when
+        player.addMpAs(10);
+        //then
+        assertThat(player.getMp()).isEqualTo(100);
+    }
+
+    @Test
+    @DisplayName("최대 MP 100을 초과해서 회복되지 않는다.")
+    void Mp_정상적으로_감소() {
+        //given
+        Player player = new Player(100, 100, "test1");
+        //when
+        player.addMpAs(-20);
+        //then
+        assertThat(player.getMp()).isEqualTo(80);
+    }
+
+    @Test
+    @DisplayName("최소 MP 0을 이하로 떨어지지 않는다.")
+    void Mp_0미만으로_감소X() {
+        //given
+        Player player = new Player(100, 100, "test1");
+        //when
+        player.addMpAs(-110);
+        //then
+        assertThat(player.getMp()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("최대 MP 초과해서 회복 하지 않는다.")
+    void Mp_최대_초과_회복X() {
+        //given
+        Player player = new Player(100, 100, "test1");
+        //when
+        player.addMpAs(-20);
+        player.addMpAs(30);
+        //then
+        assertThat(player.getMp()).isEqualTo(100);
+    }
+
+    @Test
+    @DisplayName("AttackType을 1번으로 등록하면 Normal이 호출된다.")
     void PlayerTest() {
         //given
         Player player = new Player(100, 100, "test1");
         //when
-        player.increaseMp(10);
+        player.setAttackType(1);
         //then
-        Assertions.assertThat(player.getMp()).isEqualTo(100);
     }
 
 
