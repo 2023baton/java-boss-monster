@@ -17,10 +17,13 @@ Enum AttackType
 - [x] Normal Attack (물리 공격), 데미지 10, 마나 소모량 -10
 - [x] Magical Attack(마법 공격), 데미지 20, 마나 소모량 30
 
-Attackable(Interface)
+Attack
 
+-[x] AttackBuilder 클래스를 통해 생성한다.
+    - [x] 매개변수로 데미지, AttackType, mpCost를 가진다.
+        - [x] 데미지는 필수, AttackType, mpCost는 선택 매개변수
+            - [x] AttackType = Normal, mpCost = 0 을 기본값으로 한다.
 -[ ] attack()을 가진다.
--[ ] attack(AttackType을 가짐)
 
 Player - Entity 자식
 
@@ -29,25 +32,15 @@ Player - Entity 자식
 - [x] name을 가진다.
     - [x] 5글자 이하의 이름을 가져야한다.
 - [x] MP를 가진다.
-- [ ] attackable 구현체를 가진다.
-    - [ ] 공격을 할때 물리공격과 마법 공격으로 나뉜다.
-    - [ ] 1번은 물리 공격
-        - [ ] 물리 공격을 하면 MP 10 회복
-            - [ ] 최대 MP 초과해서는 회복되지 않는다.
-        - [ ] 데미지 10
-    - [ ] 2번은 마법 공격
-        - [ ] 마법 공격을 하면 MP 30 감소
-        - [ ] 데미지 20
+- [ ] attack을 가진다.
 
 Boss - Entity 자식
 
 - [x] 생성될 때 (HP)를 생성자로 받는다.
     - [x] HP는 100 ~ 300 사이여야 한다.
 - [ ] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
-- [ ] Attackable 인터페이스를 구현한다.
-    - [ ] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
 
-BattleResult
+Battle
 
 - [ ] Player와 Boss를 의존성 주입 받는다.
 - [ ] BattleCount 를 가진다.
