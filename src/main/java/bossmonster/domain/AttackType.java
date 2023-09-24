@@ -28,7 +28,7 @@ public enum AttackType {
         return mpCost;
     }
 
-    public static AttackType TypeOfNumber(int number) {
+    public static AttackType createAttackTypeByNumber(int number) {
         return Arrays.stream(values())
                 .filter(value -> value.getTypeNumber() == number)
                 .findAny()

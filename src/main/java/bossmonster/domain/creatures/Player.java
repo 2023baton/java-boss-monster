@@ -38,7 +38,7 @@ public final class Player extends Creature {
     }
 
     public void setAttackType(int attackNumber) {
-        this.attackType = AttackType.TypeOfNumber(attackNumber);
+        this.attackType = AttackType.createAttackTypeByNumber(attackNumber);
     }
 
     private void validateNameLength(String name) {
