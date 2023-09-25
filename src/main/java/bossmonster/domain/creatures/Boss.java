@@ -7,6 +7,8 @@ public final class Boss extends Creature {
 
     public Boss(int totalHp) {
         super(totalHp);
+        totalMp = 0;
+        this.mp = totalMp;
         validateHp(totalHp);
     }
 

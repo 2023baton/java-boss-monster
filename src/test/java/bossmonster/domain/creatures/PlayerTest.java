@@ -1,5 +1,7 @@
 package bossmonster.domain.creatures;
 
+import bossmonster.domain.AttackEntity;
+import bossmonster.domain.AttackType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +46,7 @@ class PlayerTest {
         //given
         Player player = new Player(100, 100, "test1");
         //when
-        player.addMpAs(10);
+        //player.addMpAs(10);
         //then
         assertThat(player.getMp()).isEqualTo(100);
     }
@@ -54,43 +56,36 @@ class PlayerTest {
     void Mp_정상적으로_감소() {
         //given
         Player player = new Player(100, 100, "test1");
+        AttackEntity attackEntity = new AttackEntity.AttackEntityBuilder(AttackType.NORMAL).build();
         //when
-        player.addMpAs(-20);
-        //then
-        assertThat(player.getMp()).isEqualTo(80);
-    }
-
-    @Test
-    @DisplayName("최소 MP 0을 이하로 떨어지지 않는다.")
-    void Mp_0미만으로_감소X() {
-        //given
-        Player player = new Player(100, 100, "test1");
-        //when
-        player.addMpAs(-110);
-        //then
-        assertThat(player.getMp()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("최대 MP 초과해서 회복 하지 않는다.")
-    void Mp_최대_초과_회복X() {
-        //given
-        Player player = new Player(100, 100, "test1");
-        //when
-        player.addMpAs(-20);
-        player.addMpAs(30);
+        player.attack(attackEntity, player);
         //then
         assertThat(player.getMp()).isEqualTo(100);
     }
 
     @Test
-    @DisplayName("AttackType을 1번으로 등록하면 Normal이 호출된다.")
-    void PlayerTest() {
+    @DisplayName("마나가 없을 때 사용하려고 하면 예외가 발생한다.")
+    void Mp_부적절_예외_발생() {
+        //given
+        Player player = new Player(200, 0, "test1");
+        //when
+        AttackEntity attackEntity = new AttackEntity.AttackEntityBuilder(AttackType.MAGIC).build();
+        //then
+        assertThrows(IllegalArgumentException.class, () -> player.attack(attackEntity, player));
+    }
+
+    @Test
+    @DisplayName("마법을 사용했다가 다시 물리공격을 사용하면 결과적으로 20만 사용됐어야한다.")
+    void Mp_회복_정상() {
         //given
         Player player = new Player(100, 100, "test1");
         //when
-        player.setAttackType(1);
+        AttackEntity attackEntity = new AttackEntity.AttackEntityBuilder(AttackType.MAGIC).build();
+        player.attack(attackEntity, player);
+        attackEntity = new AttackEntity.AttackEntityBuilder(AttackType.NORMAL).build();
+        player.attack(attackEntity, player);
         //then
+        assertThat(player.getMp()).isEqualTo(80);
     }
 
 

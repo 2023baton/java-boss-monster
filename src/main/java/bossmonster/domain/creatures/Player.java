@@ -1,14 +1,18 @@
 package bossmonster.domain.creatures;
 
-import bossmonster.domain.AttackType;
-
-public final class Player extends Creature implements Attackable {
+public final class Player extends Creature {
     private static final int HP_MP_SUM = 200;
     private static final int PLAYER_NAME_MAX_LENGTH = 5;
-    private int totalMp;
     private final String name;
-    private int mp;
-    private AttackType attackType;
+
+    public Player(int totalHp, int totalMp, String name) {
+        super(totalHp);
+        this.totalMp = totalMp;
+        this.name = name;
+        validateStatSum(totalHp, totalMp);
+        validateNameLength(name);
+        mp = totalMp;
+    }
 
     public int getTotalMp() {
         return totalMp;
@@ -20,25 +24,6 @@ public final class Player extends Creature implements Attackable {
 
     public int getMp() {
         return mp;
-    }
-
-    public Player(int totalHp, int totalMp, String name) {
-        super(totalHp);
-        this.totalMp = totalMp;
-        this.name = name;
-        validateStatSum(totalHp, totalMp);
-        validateNameLength(name);
-        mp = totalMp;
-    }
-
-    public void addMpAs(int amount) {
-        mp += amount;
-        if (mp >= totalHp) mp = totalMp;
-        if (mp <= 0) mp = 0;
-    }
-
-    public void setAttackType(int attackNumber) {
-        this.attackType = AttackType.createAttackTypeByNumber(attackNumber);
     }
 
     private void validateNameLength(String name) {
