@@ -8,10 +8,13 @@
 
 Creature(Abstract)
 
+- [x] totalHp를 가진다.
+- [x] totalMp를 가진다.
+- [x] mp를 가진다.
 - [x] Hp를 가진다.
 - [x] DecreaseHp 함수를 가진다.
-
-Enum AttackType
+- [x] attack을 가진다.
+  Enum AttackType
 
 - [x] 공격 종류, 데미지, 공격 번호를 가진다.
 - [x] Normal Attack (물리 공격), 데미지 10, 마나 소모량 -10
@@ -23,7 +26,6 @@ Attack
     - [x] 매개변수로 데미지, AttackType, mpCost를 가진다.
         - [x] 데미지는 필수, AttackType, mpCost는 선택 매개변수
             - [x] AttackType = Normal, mpCost = 0 을 기본값으로 한다.
--[ ] attack()을 가진다.
 
 Player - Entity 자식
 
@@ -31,8 +33,6 @@ Player - Entity 자식
     - [x] HP + MP = 200여야 한다.
 - [x] name을 가진다.
     - [x] 5글자 이하의 이름을 가져야한다.
-- [x] MP를 가진다.
-- [ ] attack을 가진다.
 
 Boss - Entity 자식
 

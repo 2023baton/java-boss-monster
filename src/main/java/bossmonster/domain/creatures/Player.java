@@ -14,17 +14,10 @@ public final class Player extends Creature {
         mp = totalMp;
     }
 
-    public int getTotalMp() {
-        return totalMp;
-    }
-
     public String getName() {
         return name;
     }
 
-    public int getMp() {
-        return mp;
-    }
 
     private void validateNameLength(String name) {
         if (name.length() > PLAYER_NAME_MAX_LENGTH) {
