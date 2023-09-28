@@ -14,8 +14,9 @@ Creature(Abstract)
 - [x] Hp를 가진다.
 - [x] DecreaseHp 함수를 가진다.
 - [x] attack을 가진다.
+- [x] bool dead를 가진다.
+- [x] die를 가진다.
   Enum AttackType
-
 - [x] 공격 종류, 데미지, 공격 번호를 가진다.
 - [x] Normal Attack (물리 공격), 데미지 10, 마나 소모량 -10
 - [x] Magical Attack(마법 공격), 데미지 20, 마나 소모량 30
@@ -43,8 +44,17 @@ Boss - Entity 자식
 Battle
 
 - [ ] Player와 Boss를 의존성 주입 받는다.
-- [ ] BattleCount 를 가진다.
-- [ ] isPlayerWin을 가진다.
+- [ ] BattleRound 를 가진다.
+- [ ] isGameEnd를 가진다.
+- [ ] doNextRound() 다음 라운드 전투 시작
+    - [ ] 플레이어가 먼저 공격한다.
+    - [ ] 보스는 체력이 0이 된다면 공격할 수 없다.
+    - [ ] Round+1
+    - [ ]
+
+BattleRule(인터페이스) : 레이드 방식을 가지고 있는 인터페이스
+
+- [ ] 
 
 ### 컨트롤러
 
