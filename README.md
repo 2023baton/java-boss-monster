@@ -46,16 +46,15 @@ Battle
 - [ ] BattleCount 를 가진다.
 - [ ] isPlayerWin을 가진다.
 
-### 서비스 레이어
+### 컨트롤러
 
-Battle Service(Inferface)
+- [ ] FrontController : 해당 컨트롤러가 다른 컨트롤러를 매핑해줌
 
-- [ ] 생성자 주입을 통해 배틀 방식 중 하나를 입력받는다.
-- [ ] next() 다음 배틀을 가진다.
+- [ ] StartController : GameStartOutputView와 GameStartInputView를 호출
 
-PlayerFirstBattleService(BattleService 구현체)
+- [ ] BattleController : BattleInputView와 BattleOutputView를 호출
 
-- [ ] next()를 플레이어가 선 공격하도록 구현한다.
+- [ ] ResultController : ResultInputView와 ResultOutputView를 호출
 
 ### 입력 요구사항
 
@@ -76,7 +75,11 @@ PlayerFirstBattleService(BattleService 구현체)
 
 ### 출력 요구사항
 
-- [ ] 게임 시작 전
+- [ ] ProgressOutputView : 보스와 플레이어의 체력, 보스의 모습을 그리는 뷰
+- [ ] WinResultOutputView : 플레이어가 이겼을 때 결과를 그리는 뷰
+- [ ] LoseResultOutputView : 플레이어가 졌을 때 결과를 그리는 뷰
+- [ ] BattleOutputView : 전투 중을 그리는 뷰
+- [ ] TextOutputView : 텍스트를 출력하는 뷰
 
 <div>
 
@@ -90,6 +93,18 @@ PlayerFirstBattleService(BattleService 구현체)
     100,100
     
     보스 레이드를 시작합니다!
+    ============================
+    BOSS HP [100/100]
+    ____________________________
+    ^-^
+    / 0 0 \
+    (   "   )
+    \  -  /
+    - ^ -
+    ____________________________
+    
+    dori HP [100/100] MP [100/100]
+    ============================
 
 </div>
 
@@ -97,19 +112,6 @@ PlayerFirstBattleService(BattleService 구현체)
 
 <div>
 
-    ============================
-    BOSS HP [100/100]
-    ____________________________
-       ^-^
-     / 0 0 \
-    (   "   )
-     \  -  /
-      - ^ -
-    ____________________________
-    
-    dori HP [100/100] MP [100/100]
-    ============================
-    
     어떤 공격을 하시겠습니까?
     1. 물리 공격
     2. 마법 공격
@@ -121,11 +123,11 @@ PlayerFirstBattleService(BattleService 구현체)
     ============================
     BOSS HP [60/100]
     ____________________________
-      ^-^
-    / x x \
-    (   "\  )
-    \  ^  /
-    - ^ -
+        ^-^
+      / x x \
+     (   "\  )
+      \  ^  /
+       - ^ -
     ____________________________
 
     dori HP [85/100] MP [40/100]
