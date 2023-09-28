@@ -38,7 +38,7 @@ Boss - Entity 자식
 
 - [x] 생성될 때 (HP)를 생성자로 받는다.
     - [x] HP는 100 ~ 300 사이여야 한다.
-- [ ] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
+- [x] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
 
 Battle
 
@@ -75,11 +75,15 @@ Battle
 
 ### 출력 요구사항
 
-- [ ] ProgressOutputView : 보스와 플레이어의 체력, 보스의 모습을 그리는 뷰
+- [x] ProgressOutputView : 보스와 플레이어의 체력, 보스의 모습을 그리는 뷰
+    - [x] 보스의 체력/최대 체력을 출력한다.
+        - [x] Boss 클래스가 아니라면 예외 발생
+    - [x] 플레이어의 이름, 체력/최대 체력, mp/최대 mp를 출력한다.
+        - [x] Player 클래스가 아니라면 예외 발생
 - [ ] WinResultOutputView : 플레이어가 이겼을 때 결과를 그리는 뷰
 - [ ] LoseResultOutputView : 플레이어가 졌을 때 결과를 그리는 뷰
 - [ ] BattleOutputView : 전투 중을 그리는 뷰
-- [ ] TextOutputView : 텍스트를 출력하는 뷰
+- [ ] TextOutputView : 텍스트를 출력하는
 
 <div>
 
