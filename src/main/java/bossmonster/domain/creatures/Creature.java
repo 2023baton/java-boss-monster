@@ -31,6 +31,10 @@ public abstract class Creature {
     }
 
     protected void decreaseHp(int amount) {
+        if (hp <= 0) {
+            dead = true;
+            return;
+        }
         hp -= amount;
     }
 
@@ -40,10 +44,6 @@ public abstract class Creature {
         System.out.println("totalMp = " + totalMp);
         if (mp >= totalHp) mp = totalMp;
         if (mp <= 0) mp = 0;
-    }
-
-    protected void die() {
-        this.dead = true;
     }
 
     public void attack(AttackEntity attackEntity, Creature target) {
