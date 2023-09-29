@@ -47,7 +47,7 @@ Boss - Entity 자식
 - [x] attack을 가진다.
 - [x] nextRound() 다음 라운드 전투 시작하는 추상 메서드
 
-- [ ]BattlePriority(인터페이스) : 공격 우선순위를 선정하는 방식을 가지고있다.
+- [x]BattlePriority(인터페이스) : 공격 우선순위를 선정하는 방식을 가지고있다.
 
 - setAttackQueueOrder로 순서를 정하는 함수를 가짐
 
