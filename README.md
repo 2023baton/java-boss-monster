@@ -44,12 +44,21 @@ Boss - Entity 자식
     - [x] HP는 100 ~ 300 사이여야 한다.
 - [x] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
 
-Battle
+- [ ] RoundBattle(추상클래스)
 
-- [ ] Player와 Boss를 의존성 주입 받는다.
-- [ ] BattleRound 를 가진다.
-- [ ] isGameEnd를 가진다.
-- [ ] doNextRound() 다음 라운드 전투 시작
+- [x] List<AttackEntity>을 의존받는다.
+- [x] BattleRound 를 가진다.
+- [x] isGameEnd를 가진다.
+- [x] attack을 가진다.
+- [x] nextRound() 다음 라운드 전투 시작하는 추상 메서드
+
+- [ ]BattlePriority(인터페이스) : 공격 우선순위를 선정하는 방식을 가지고있다.
+
+- setAttackQueueOrder로 순서를 정하는 함수를 가짐
+
+PlayerPriorityBattle : 추상클래스와 인터페이스 구현체
+
+- [ ] nextRound()
     - [ ] 플레이어가 먼저 공격한다.
     - [ ] 보스는 체력이 0이 된다면 공격할 수 없다.
     - [ ] Round+1
