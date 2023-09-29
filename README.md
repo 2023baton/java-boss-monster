@@ -12,16 +12,19 @@ Creature(Abstract)
 - [x] totalMp를 가진다.
 - [x] mp를 가진다.
 - [x] Hp를 가진다.
+    - [x] 체력이 0이 되면 dead 상태가 된다.
 - [x] DecreaseHp 함수를 가진다.
-- [x] attack을 가진다.
 - [x] bool dead를 가진다.
-- [x] die를 가진다.
+
   Enum AttackType
 - [x] 공격 종류, 데미지, 공격 번호를 가진다.
 - [x] Normal Attack (물리 공격), 데미지 10, 마나 소모량 -10
 - [x] Magical Attack(마법 공격), 데미지 20, 마나 소모량 30
 
-Attack
+AttackEntity
+
+- [x] 매개변수로 Attacker, Attacked, AttackType을 가진다.
+-
 
 -[x] AttackBuilder 클래스를 통해 생성한다.
     - [x] 매개변수로 데미지, AttackType, mpCost를 가진다.

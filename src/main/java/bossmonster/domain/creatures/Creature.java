@@ -1,7 +1,5 @@
 package bossmonster.domain.creatures;
 
-import bossmonster.domain.attack.AttackEntity;
-
 public abstract class Creature {
     protected final int totalHp;
     protected int totalMp;
@@ -30,7 +28,7 @@ public abstract class Creature {
         this.hp = totalHp;
     }
 
-    protected void decreaseHp(int amount) {
+    public void damaged(int amount) {
         if (hp <= 0) {
             dead = true;
             return;
@@ -38,22 +36,14 @@ public abstract class Creature {
         hp -= amount;
     }
 
-    protected void decreaseMpAs(int amount) {
-        System.out.println("mp = " + mp);
-        mp -= amount;
-        System.out.println("totalMp = " + totalMp);
+    public void decreaseMpAs(int mpCost) {
+        validatePossibleAttack(mpCost);
+        mp -= mpCost;
         if (mp >= totalHp) mp = totalMp;
-        if (mp <= 0) mp = 0;
     }
 
-    public void attack(AttackEntity attackEntity, Creature target) {
-        validatePossibleAttack(attackEntity);
-        decreaseMpAs(attackEntity.getMpCost());
-        target.decreaseHp(attackEntity.getDamage());
-    }
-
-    private void validatePossibleAttack(AttackEntity attackEntity) {
-        if (mp - attackEntity.getMpCost() < 0) {
+    private void validatePossibleAttack(int mpCost) {
+        if (mp - mpCost < 0) {
             throw new IllegalArgumentException("mp가 부족해서 해당 공격을 사용할 수 없습니다.");
         }
     }

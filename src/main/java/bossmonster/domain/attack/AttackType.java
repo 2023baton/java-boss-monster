@@ -35,11 +35,7 @@ public enum AttackType {
     public int getMpCost() {
         return mpCost;
     }
-
-    public static AttackEntity createAttackEntity(AttackType attackType) {
-        return new AttackEntity(attackType.getDamage(), attackType.getMpCost());
-    }
-
+    
     public static AttackType getAttackTypeByNumber(int typeNumber) {
         return Arrays.stream(AttackType.values())
                 .filter(value -> value.getTypeNumber() == typeNumber)
