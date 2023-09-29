@@ -26,12 +26,7 @@ AttackEntity
 - [x] 매개변수로 Attacker, Attacked, AttackType을 가진다.
 -
 
--[x] AttackBuilder 클래스를 통해 생성한다.
-    - [x] 매개변수로 데미지, AttackType, mpCost를 가진다.
-        - [x] 데미지는 필수, AttackType, mpCost는 선택 매개변수
-            - [x] AttackType = Normal, mpCost = 0 을 기본값으로 한다.
-
-Player - Entity 자식
+-[x]Player - Entity 자식
 
 - [x] 생성될 때 (name, HP,MP)를 입력으로 가져야한다.
     - [x] HP + MP = 200여야 한다.
@@ -60,13 +55,11 @@ PlayerPriorityBattle : 추상클래스와 인터페이스 구현체
 
 - [ ] nextRound()
     - [ ] 플레이어가 먼저 공격한다.
-    - [ ] 보스는 체력이 0이 된다면 공격할 수 없다.
     - [ ] Round+1
-    - [ ]
+    - [ ] boss가 먼저 dead가 되면 player win,
+    - [ ] plyaer가 먼저 dead가 되면 player lose
 
-BattleRule(인터페이스) : 레이드 방식을 가지고 있는 인터페이스
-
-- [ ] 
+-[x] TypeQualifier: Creature가 Player인지 Boss인지 구분
 
 ### 컨트롤러
 

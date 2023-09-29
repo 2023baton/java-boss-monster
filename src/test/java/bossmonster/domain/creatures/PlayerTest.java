@@ -59,9 +59,8 @@ class PlayerTest {
     void Mp_정상적으로_감소() {
         //given
         Player player = new Player(100, 100, "test1");
-        AttackEntity attackEntity = AttackEntity.createAttack(AttackType.NORMAL);
         //when
-        player.attack(attackEntity, player);
+        player.decreaseMpAs(-10);
         //then
         assertThat(player.getMp()).isEqualTo(100);
     }
@@ -72,24 +71,9 @@ class PlayerTest {
         //given
         Player player = new Player(200, 0, "test1");
         //when
-        AttackEntity attackEntity = AttackEntity.createAttack(AttackType.MAGIC);
+        AttackEntity attackEntity = AttackEntity.createAttack(player, player, AttackType.MAGIC);
         //then
-        assertThrows(IllegalArgumentException.class, () -> player.attack(attackEntity, player));
+        assertThrows(IllegalArgumentException.class, () -> player.decreaseMpAs(10));
     }
-
-    @Test
-    @DisplayName("마법을 사용했다가 다시 물리공격을 사용하면 결과적으로 20만 사용됐어야한다.")
-    void Mp_회복_정상() {
-        //given
-        Player player = new Player(100, 100, "test1");
-        //when
-        AttackEntity attackEntity = AttackEntity.createAttack(AttackType.MAGIC);
-        player.attack(attackEntity, player);
-        attackEntity = AttackEntity.createAttack(AttackType.NORMAL);
-        player.attack(attackEntity, player);
-        //then
-        assertThat(player.getMp()).isEqualTo(80);
-    }
-
 
 }
