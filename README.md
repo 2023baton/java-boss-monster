@@ -47,17 +47,17 @@ Boss - Entity 자식
 - [x] attack을 가진다.
 - [x] nextRound() 다음 라운드 전투 시작하는 추상 메서드
 
-- [x]BattlePriority(인터페이스) : 공격 우선순위를 선정하는 방식을 가지고있다.
+- [x] BattlePriority(인터페이스) : 공격 우선순위를 선정하는 방식을 가지고있다.
 
-- setAttackQueueOrder로 순서를 정하는 함수를 가짐
+- [x] setAttackQueueOrder로 순서를 정하는 함수를 가짐
 
-PlayerPriorityBattle : 추상클래스와 인터페이스 구현체
+- [x] PlayerPriorityBattle : 추상클래스와 인터페이스 구현체
 
 - [ ] nextRound()
-    - [ ] 플레이어가 먼저 공격한다.
-    - [ ] Round+1
+    - [x] 플레이어가 먼저 공격한다.
+    - [x] Round+1
     - [ ] boss가 먼저 dead가 되면 player win,
-    - [ ] plyaer가 먼저 dead가 되면 player lose
+    - [ ] player가 먼저 dead가 되면 player lose
 
 -[x] TypeQualifier: Creature가 Player인지 Boss인지 구분
 

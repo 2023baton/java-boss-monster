@@ -37,6 +37,7 @@ public final class AttackEntity {
     }
 
     public void attack() {
+        if (attacker.getHp() <= 0 || attacked.getHp() <= 0) return;
         this.attacker.decreaseMpAs(this.mpCost);
         this.attacked.damaged(this.damage);
     }
