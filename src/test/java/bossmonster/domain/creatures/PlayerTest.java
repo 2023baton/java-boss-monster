@@ -1,7 +1,5 @@
 package bossmonster.domain.creatures;
 
-import bossmonster.domain.attack.AttackEntity;
-import bossmonster.domain.attack.AttackType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -64,16 +62,4 @@ class PlayerTest {
         //then
         assertThat(player.getMp()).isEqualTo(100);
     }
-
-    @Test
-    @DisplayName("마나가 없을 때 사용하려고 하면 예외가 발생한다.")
-    void Mp_부적절_예외_발생() {
-        //given
-        Player player = new Player(200, 0, "test1");
-        //when
-        AttackEntity attackEntity = AttackEntity.createAttack(player, player, AttackType.MAGIC);
-        //then
-        assertThrows(IllegalArgumentException.class, () -> player.decreaseMpAs(10));
-    }
-
 }

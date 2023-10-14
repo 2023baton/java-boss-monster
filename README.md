@@ -39,8 +39,7 @@ Boss - Entity 자식
     - [x] HP는 100 ~ 300 사이여야 한다.
 - [x] attack()을 0 ~ 20의 랜덤 데미지를 주도록 구현한다.
 
-- [ ] RoundBattle(추상클래스)
-
+- [x] RoundBattle(추상클래스)
 - [x] List<AttackEntity>을 의존받는다.
 - [x] BattleRound 를 가진다.
 - [x] isGameEnd를 가진다.

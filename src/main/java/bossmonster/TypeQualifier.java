@@ -3,9 +3,9 @@ package bossmonster;
 import bossmonster.domain.creatures.Creature;
 
 public class TypeQualifier {
-    public static boolean checkCreatureType(Class<? extends Creature> checkType, Creature checked) {
+    public static boolean checkCreatureType(Class<? extends Creature> type, Creature checked) {
         try {
-            Class<? extends Creature> subclass = checked.getClass().asSubclass(checkType);
+            type.cast(checked);
         } catch (ClassCastException e) {
             return false;
         }

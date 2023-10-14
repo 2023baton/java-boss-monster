@@ -2,10 +2,17 @@ package bossmonster.domain.creatures;
 
 public abstract class Creature {
     protected final int totalHp;
-    protected int totalMp;
+    protected final int totalMp;
     protected int hp;
     protected int mp;
-    protected boolean dead = false;
+
+    public Creature(int totalHp, int totalMp) {
+        this.totalHp = totalHp;
+        this.totalMp = totalMp;
+        this.hp = totalHp;
+        this.mp = totalMp;
+    }
+
 
     public int getTotalHp() {
         return totalHp;
@@ -23,17 +30,12 @@ public abstract class Creature {
         return mp;
     }
 
-    public Creature(int totalHp) {
-        this.totalHp = totalHp;
-        this.hp = totalHp;
-    }
-
     public void damaged(int amount) {
-        if (hp <= 0) {
-            dead = true;
-            return;
-        }
         hp -= amount;
+        if (hp < 0) {
+            hp = 0;
+        }
+
     }
 
     public void decreaseMpAs(int mpCost) {
